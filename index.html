@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Browser - My Digital Mind</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Browser Window -->
+    <div class="browser-window">
+        <!-- Browser Chrome Header -->
+        <div class="browser-chrome">
+            <!-- Window Controls -->
+            <div class="window-controls">
+                <span class="control-btn close"></span>
+                <span class="control-btn minimize"></span>
+                <span class="control-btn maximize"></span>
+            </div>
+
+            <!-- Tab Bar -->
+            <div class="tab-bar">
+                <div class="tabs-container" id="tabsContainer">
+                    <!-- Tabs will be dynamically generated -->
+                </div>
+                <button class="new-tab-btn" id="newTabBtn">+</button>
+            </div>
+
+            <!-- Address Bar -->
+            <div class="address-bar">
+                <div class="nav-controls">
+                    <button class="nav-btn" id="backBtn">←</button>
+                    <button class="nav-btn" id="forwardBtn">→</button>
+                    <button class="nav-btn" id="refreshBtn">⟳</button>
+                </div>
+                <div class="url-container">
+                    <span class="protocol">🔒</span>
+                    <input type="text" class="url-input" id="urlInput" readonly value="brain://localhost/"/>
+                    <span class="status-indicator" id="statusIndicator"></span>
+                </div>
+                <button class="history-btn" id="historyBtn">📅</button>
+                <button class="menu-btn">⋮</button>
+            </div>
+        </div>
+
+        <!-- Tab Content Area -->
+        <div class="tab-content-area" id="tabContentArea">
+            <!-- Content will be dynamically loaded -->
+        </div>
+
+        <!-- Dev Console -->
+        <div class="dev-console" id="devConsole">
+            <div class="console-header">
+                <div class="console-tabs">
+                    <button class="console-tab active" data-console="terminal">Terminal</button>
+                    <button class="console-tab" data-console="spotify">Now Playing</button>
+                    <button class="console-tab" data-console="stats">Stats</button>
+                    <button class="console-tab" data-console="chat">Chat</button>
+                </div>
+                <button class="console-toggle" id="consoleToggle">_</button>
+            </div>
+            <div class="console-content">
+                <div class="console-panel active" id="terminalPanel">
+                    <div class="terminal-output" id="terminalOutput"></div>
+                </div>
+                <div class="console-panel" id="spotifyPanel">
+                    <div class="now-playing">
+                        <div class="track-info">
+                            <span class="track-icon">🎵</span>
+                            <span class="track-name" id="trackName">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="console-panel" id="statsPanel">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-icon">☕</span>
+                            <span class="stat-label">Coffee today:</span>
+                            <span class="stat-value" id="coffeeCount">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">👥</span>
+                            <span class="stat-label">Visitors here:</span>
+                            <span class="stat-value" id="visitorCount">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">⏱️</span>
+                            <span class="stat-label">Uptime:</span>
+                            <span class="stat-value" id="uptime">0h 0m</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="console-panel" id="chatPanel">
+                    <div class="chat-messages" id="chatMessages"></div>
+                    <div class="chat-input-container">
+                        <input type="text" class="chat-input" id="chatInput" placeholder="Send a message...">
+                        <button class="chat-send" id="chatSend">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- History Modal -->
+    <div class="modal-overlay" id="historyModal">
+        <div class="modal-content history-modal">
+            <div class="modal-header">
+                <h2>Brain History</h2>
+                <button class="modal-close" id="closeHistory">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="calendar-container" id="calendar"></div>
+                <div class="history-preview" id="historyPreview">
+                    <p class="placeholder">Select a date to view your brain's state</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Collaborative Cursors Container -->
+    <div class="cursors-container" id="cursorsContainer"></div>
+
+    <!-- Heatmap Overlay -->
+    <div class="heatmap-overlay" id="heatmapOverlay"></div>
+
+    <script src="data.js"></script>
+    <script src="cursors.js"></script>
+    <script src="history.js"></script>
+    <script src="console.js"></script>
+    <script src="tabs.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
